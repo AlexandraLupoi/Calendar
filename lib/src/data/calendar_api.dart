@@ -23,8 +23,8 @@ class CalendarApi {
 
     final Map<String, dynamic> body = jsonDecode(response.body) as Map<String, dynamic>;
     final Map<String, dynamic> data = body['response'] as Map<String, dynamic>;
-    final List<dynamic> holidays = data['holidays'] as List<Map<String, dynamic>>;
-
+    final List<dynamic> holidays = data['holidays'] as List<dynamic>;
+    
     return holidays;
   }
 }
