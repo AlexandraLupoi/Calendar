@@ -19,7 +19,6 @@ void main() {
     middleware: <Middleware<AppState>>[
       (Store<AppState> store, dynamic action, NextDispatcher next) {
         next(action);
-        print(store.state);
       },
       EpicMiddleware<AppState>(epics.epics)
     ]
