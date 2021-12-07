@@ -1,3 +1,5 @@
+import '../models/index.dart';
+
 class GetHolidays {
   const GetHolidays(this.result);
 
@@ -7,7 +9,7 @@ class GetHolidays {
 class GetHolidaysSuccessful {
   const GetHolidaysSuccessful(this.holidays);
 
-  final List<dynamic> holidays;
+  final List<Holiday> holidays;
 }
 
 class GetHolidaysError {

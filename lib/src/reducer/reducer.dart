@@ -1,7 +1,7 @@
 import 'package:redux/redux.dart';
 
 import '../actions/get_holidays.dart';
-import '../models/app_state.dart';
+import '../models/index.dart';
 
 Reducer<AppState> reducer = combineReducers<AppState>(<Reducer<AppState>>[
   TypedReducer<AppState, GetHolidays>(_getHolidays),
@@ -14,15 +14,12 @@ AppState _getHolidays(AppState state, GetHolidays action) {
 }
 
 AppState _getHolidaysSuccessful(AppState state, GetHolidaysSuccessful action) {
-  final List<dynamic> holidays = <dynamic>[];
+  final List<Holiday> holidays = <Holiday>[];
 
   holidays.addAll(state.holidays);
   holidays.addAll(action.holidays);
 
-  return state.copyWith(
-    holidays: holidays,
-    isLoading: false
-  );
+  return state.copyWith(holidays: holidays, isLoading: false);
 }
 
 AppState _getHolidaysError(AppState state, GetHolidaysError action) {
