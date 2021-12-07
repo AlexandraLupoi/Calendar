@@ -1,19 +1,6 @@
-class AppState {
-  AppState({
-    this.holidays = const <dynamic>[],
-    this.isLoading = false
-  });
+part of models;
 
-  AppState copyWith({
-    final List<dynamic>? holidays,
-    final bool? isLoading
-  }) {
-    return AppState(
-      holidays: holidays ?? this.holidays,
-      isLoading: isLoading ?? this.isLoading
-    );
-  }
-
-  final List<dynamic> holidays;
-  final bool isLoading;
+@freezed
+class AppState with _$AppState {
+  const factory AppState({@Default(<Holiday>[]) List<Holiday> holidays, @Default(false) bool isLoading}) = AppState$;
 }
