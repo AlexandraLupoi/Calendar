@@ -5,7 +5,7 @@ import 'package:redux_epics/redux_epics.dart';
 
 import './src/data/calendar_api.dart';
 import './src/epics/app_epics.dart';
-import './src/models/app_state.dart';
+import './src/models/index.dart';
 import './src/presentation/home_page.dart';
 import './src/reducer/reducer.dart';
 
@@ -13,16 +13,13 @@ void main() {
   final CalendarApi calendarApi = CalendarApi();
   final AppEpics epics = AppEpics(calendarApi);
 
-  final Store<AppState> store = Store<AppState>(
-    reducer,
-    initialState: AppState(),
-    middleware: <Middleware<AppState>>[
-      (Store<AppState> store, dynamic action, NextDispatcher next) {
-        next(action);
-      },
-      EpicMiddleware<AppState>(epics.epics)
-    ]
-  );
+  final Store<AppState> store =
+      Store<AppState>(reducer, initialState: const AppState(), middleware: <Middleware<AppState>>[
+    (Store<AppState> store, dynamic action, NextDispatcher next) {
+      next(action);
+    },
+    EpicMiddleware<AppState>(epics.epics)
+  ]);
 
   runApp(MyApp(store: store));
 }
@@ -34,12 +31,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
-      store: store,
-      child: MaterialApp(
-        theme: ThemeData.dark(),
-        home: const HomePage()
-      )
-    );
+    return StoreProvider<AppState>(store: store, child: MaterialApp(theme: ThemeData.dark(), home: const HomePage()));
   }
 }
