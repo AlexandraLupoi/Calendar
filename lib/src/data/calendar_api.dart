@@ -26,6 +26,6 @@ class CalendarApi {
     final Map<String, dynamic> data = body['response'] as Map<String, dynamic>;
     final List<dynamic> holidays = data['holidays'] as List<dynamic>;
 
-    return holidays.map<Holiday>((dynamic item) => Holiday.fromJson(item)).toList();
+    return holidays.map<Holiday>((dynamic item) => Holiday.fromJson(item as Map<dynamic, dynamic>)).toList();
   }
 }
