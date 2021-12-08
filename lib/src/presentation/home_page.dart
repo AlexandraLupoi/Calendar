@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             TableCalendar<Widget>(
               focusedDay: _focusedDay,
-              firstDay: DateTime.utc(2020, 1, 1),
+              firstDay: DateTime.utc(2020),
               lastDay: DateTime.utc(2022, 12, 31),
               startingDayOfWeek: StartingDayOfWeek.monday,
               calendarFormat: _calendarFormat,

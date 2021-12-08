@@ -11,7 +11,7 @@ class AppEpics {
   final CalendarApi _api;
 
   Epic<AppState> get epics {
-    return combineEpics([TypedEpic<AppState, GetHolidays>(getHolidays)]);
+    return combineEpics(<Epic<AppState>>[TypedEpic<AppState, GetHolidays>(getHolidays)]);
   }
 
   Stream<dynamic> getHolidays(Stream<GetHolidays> actions, EpicStore<AppState> store) {
